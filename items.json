@@ -1,0 +1,11 @@
+[
+    {
+        "name": "atropine potion",
+        "reagents": ["bright wild flower", "strong iron ore", "Shy Wild Flower", "Rare Relic", "Wild Flower"],
+        "reagent_amounts": [6,2,24,2,48],
+        "result_amount": 3,
+        "exp": 576,
+        "energy": 288,
+        "img":""
+    }
+]

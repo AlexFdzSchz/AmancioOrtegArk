@@ -1,7 +1,5 @@
-from typing import List, TYPE_CHECKING
+from typing import List
 
-if TYPE_CHECKING:
-    from item import Item
 class Item:
     def __init__(self, name: str, reagents: List, reagent_amounts: List[float], result_amount: int, crafting_tax: int, energy: str, exp: int):
         self.name = name
@@ -13,11 +11,11 @@ class Item:
         self.exp = exp
         
     def print_all(self):
-        print(self.name)
-        print(self.reagents)
-        print(self.reagent_amounts)
-        print(self.result_amount)
-        print(self.crafting_tax)
-        print(self.energy)
-        print(self.exp)
+        print(f"name: {self.name}")
+        print(f"reagents: {self.reagents}")
+        print(f"reagents amount: {self.reagent_amounts}")
+        print(f"result amomunt: {self.result_amount}")
+        print(f"crafting tax: {self.crafting_tax}")
+        print(f"energy: {self.energy}")
+        print(f"exp: {self.exp}")
         

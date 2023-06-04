@@ -20,5 +20,7 @@ for data in loadedData:
 item = Item(name, reagents, reagent_amounts, result_amount, crafting_tax, energy, exp)
 items.append(item)
 
+print("-" * 40)
 for item in items:
     item.print_all()
+    print("-" * 40)

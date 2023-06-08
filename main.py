@@ -1,4 +1,4 @@
-import json, os
+import json, os, math
 from item import Item
 from stacked_item import Stacked_item
 from PyQt5.QtWidgets import QMainWindow, QApplication, QListWidget, QFrame, QSpinBox, QLabel, QSlider
@@ -28,12 +28,16 @@ class MainWindow(QMainWindow):
             
             listWidget.addItem(item.name.title())
             cont += 1
-        #Load the sliders
+        #Load the sliders listeners
         cost_reduction_slider = self.findChild(QSlider, "cost_reduction_slider")
         time_reduction_slider = self.findChild(QSlider, "time_reduction_slider")
         cost_reduction_slider.valueChanged.connect(self.discount_slider_value_changed)
         time_reduction_slider.valueChanged.connect(self.time_reduction_slider_value_changed)
-        
+
+        #Load the spinbox listeners
+        spin_boxes = self.findChildren(QSpinBox)
+        for spin_box in spin_boxes:
+            spin_box.valueChanged.connect(self.spinBoxValueChanged)
     
     def choose_Item(self, item_name: str):
         for item in self.items:
@@ -51,15 +55,19 @@ class MainWindow(QMainWindow):
         label = self.findChild(QLabel, "cost_reduction_result")
         label.setText(f"{value}%")
         print("Discount: ", self.discount)
+        self.calculate()
     
     def time_reduction_slider_value_changed(self, value):
         self.time_reduction = value
         label = self.findChild(QLabel, "time_reduction_result")
         label.setText(f"{value}%")
         print("Time reduction: ", self.time_reduction)
+        self.calculate()
     
+    def spinBoxValueChanged(self, value):
+        self.calculate()
+
     def load_Item(self, item):
-        frame = self.findChild(QFrame, "frame")
         cont = 1
         # Shows all related widgets
         self.hide_Widgets()
@@ -81,18 +89,60 @@ class MainWindow(QMainWindow):
             print(f"added img to reagent {cont}")
                 
             cont += 1
+
         # Load the crafted item widgets
+        
+        #Load the img
         img_crafted = self.findChild(QLabel, f"img_crafted")
         img_crafted.setPixmap(QPixmap(f"img/{item.name.lower()}.webp"))
         label_reagent_amount_crafted = self.findChild(QLabel, f"label_reagent_amount_crafted")
+        
+        #Load the reagent amount label
         label_reagent_amount_crafted.setVisible(True)
         label_reagent_amount_crafted.setText(f"x{item.result_amount}")
+
+        #Load the spinner label
         spinner = self.findChild(QSpinBox, f"spinBox_crafted")
         spinner.setVisible(True)
 
-    def calculate():
-        return
-               
+        #Load the crafting tax label
+        label_crafting_tax = self.findChild(QLabel, f"label_crafting_tax")
+        label_crafting_tax.setText(f"Crafting tax: {math.floor(item.crafting_tax*(1-self.discount/100))}")
+        self.calculate()
+
+    def calculate(self):
+        cont = 0
+
+        value = 0
+
+        for reagent in self.selected_item.reagents:
+            spinner = self.findChild(QSpinBox, f"spinBox_{cont+1}")
+            value += float(spinner.value())/self.get_auction_stack(reagent) * self.selected_item.reagent_amounts[cont]
+            cont += 1
+        
+        value += self.selected_item.crafting_tax*(1-self.discount/100)
+        label_crafting_tax = self.findChild(QLabel, f"label_crafting_tax")
+        label_crafting_tax.setText(f"Crafting tax: {math.floor(self.selected_item.crafting_tax*(1-self.discount/100))}")
+        
+        label_total_crafting_cost = self.findChild(QLabel, f"label_total_crafting_cost")
+        label_total_crafting_cost.setText(f"Total crafting cost: {value}")
+
+        spinner = self.findChild(QSpinBox, f"spinBox_crafted")
+        label_market_value = self.findChild(QLabel, f"label_market_value")
+        market_value = self.selected_item.result_amount * spinner.value()
+        label_market_value.setText(f"Market Value: {market_value}")
+
+
+
+
+    def get_auction_stack(self, name):
+        auction_stack = 1
+        for item in self.stacked_items:
+            if name.lower() == item.name.lower():
+                auction_stack = float(item.auction_stack)
+        return auction_stack
+
+
         
             
     def hide_Widgets(self):

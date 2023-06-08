@@ -120,7 +120,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>340</y>
+       <y>370</y>
        <width>131</width>
        <height>21</height>
       </rect>
@@ -133,7 +133,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>370</y>
+       <y>400</y>
        <width>131</width>
        <height>21</height>
       </rect>
@@ -146,7 +146,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>400</y>
+       <y>430</y>
        <width>131</width>
        <height>21</height>
       </rect>
@@ -542,6 +542,19 @@
        </layout>
       </item>
      </layout>
+    </widget>
+    <widget class="QLabel" name="label_crafting_tax">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>340</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Crafting tax:</string>
+     </property>
     </widget>
     <widget class="QWidget" name="">
      <property name="geometry">

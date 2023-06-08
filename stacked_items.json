@@ -1,0 +1,32 @@
+[ 
+    
+    {
+        "name": "Ancient Relic",
+        "auction_stack": 100
+    },
+    {
+        "name": "Rare Relic",
+        "auction_stack": 10
+    },
+    {
+        "name": "Oreha Relic",
+        "auction_stack": 10
+    },
+    {
+        "name": "Wild Flower",
+        "auction_stack": 100
+    },
+    {
+        "name": "Shy Wild Flower",
+        "auction_stack": 10
+    },
+    {
+        "name": "bright wild flower",
+        "auction_stack": 10
+    },
+    {
+        "name": "strong iron ore",
+        "auction_stack": 10
+    }
+    
+]

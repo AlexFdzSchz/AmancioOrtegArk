@@ -7,5 +7,14 @@
         "result_amount": 3,
         "exp": 576,
         "energy": 288
+    },
+    {
+        "name": "Basic Oreha Fusion Material (Excavation)",
+        "reagents": ["Oreha Relic", "Rare Relic", "Ancient Relic"],
+        "reagent_amounts": [8, 26, 64],
+        "crafting_tax": 205,
+        "result_amount": 30,
+        "exp": 432,
+        "energy": 216
     }
 ]

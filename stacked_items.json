@@ -13,6 +13,18 @@
         "auction_stack": 10
     },
     {
+        "name": "fish",
+        "auction_stack": 100
+    },
+    {
+        "name": "Natural Pearl",
+        "auction_stack": 10
+    },
+    {
+        "name": "Oreha Solar Carp",
+        "auction_stack": 10
+    },
+    {
         "name": "Wild Flower",
         "auction_stack": 100
     },

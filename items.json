@@ -16,5 +16,23 @@
         "result_amount": 30,
         "exp": 432,
         "energy": 216
+    },
+    {
+        "name": "Basic Oreha Fusion Material (Fishing)",
+        "reagents": ["Oreha Solar Carp", "Natural Pearl", "Fish"],
+        "reagent_amounts": [10, 40, 80],
+        "crafting_tax": 205,
+        "result_amount": 30,
+        "exp": 432,
+        "energy": 216
+    },
+    {
+        "name": "Superior Oreha Fusion Material (Excavation)",
+        "reagents": ["Oreha Relic", "Rare Relic", "Ancient Relic"],
+        "reagent_amounts": [16, 29, 94],
+        "crafting_tax": 250,
+        "result_amount": 20,
+        "exp": 432,
+        "energy": 216
     }
 ]

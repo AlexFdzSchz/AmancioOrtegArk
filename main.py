@@ -131,8 +131,9 @@ class MainWindow(QMainWindow):
         label_market_value = self.findChild(QLabel, f"label_market_value")
         market_value = self.selected_item.result_amount * spinner.value()
         label_market_value.setText(f"Market Value: {market_value}")
-
-
+        label_profit = self.findChild(QLabel, f"label_profit")
+        profit = "{:.2f}".format(market_value - value)
+        label_profit.setText(f"Profit: {profit}")
 
 
     def get_auction_stack(self, name):
@@ -141,10 +142,7 @@ class MainWindow(QMainWindow):
             if name.lower() == item.name.lower():
                 auction_stack = float(item.auction_stack)
         return auction_stack
-
-
-        
-            
+     
     def hide_Widgets(self):
         # Hide all spinbox
         spin_boxes = self.frame.findChildren(QSpinBox)
